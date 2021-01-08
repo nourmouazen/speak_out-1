@@ -75,7 +75,6 @@ function Signup() {
       usernameError = "your username cannot be less than 3 characters!";
     }
 
-
     if (!user.email) {
       emailError =
         "your email cannot be blank, please try to write a correct email";
@@ -111,7 +110,7 @@ function Signup() {
     <di>
       <div
         className="container w-50 p-3 mt-5"
-        style={{ backgroundColor: "beige", borderRadius: "20px" }}
+        style={{ backgroundColor: "#E3F2FD", borderRadius: "20px" }}
       >
         <br />
         <form className="form-group mr-5 ml-5">
@@ -220,7 +219,7 @@ function Signup() {
           <div className="form-group text-center">
             <button
               type="submit"
-              className="btn btn-primary"
+              className="btn btn-info"
               onClick={handleSubmit}
             >
               {/* {registering && <span className="spinner-border spinner-border-sm mr-1"></span>} */}
@@ -232,18 +231,7 @@ function Signup() {
         </form>
       </div>
 
-      {/* footer div */}
-      <div
-        className="container w-100 mt-5 mb-5"
-        style={{
-          textAlign: "center",
-          marginLeft: "auto",
-          marginRight: "auto",
-        }}
-      >
-        <Footer />
-      </div>
-      {/* footer div ends*/}
+      <Footer />
     </di>
   );
 }

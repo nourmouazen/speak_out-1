@@ -13,7 +13,7 @@ router.delete("/deleteDoctor/:id",doctorsController.deleteDoctor);
 
 
 //rating routes
-router.post("/postRating", doctorsController.postRating);
-// router.get("/getAllRatings", doctorsController.getAllRatings);
+router.post("/postRating/:id", doctorsController.postRating);
+router.get("/getRating/:id", doctorsController.getRating);
 
 module.exports = router;

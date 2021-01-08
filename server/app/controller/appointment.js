@@ -1,8 +1,8 @@
 var appointmentModels = require('../Models/appointment')
 module.exports = {
     createAppointment : (req , res)=>{
-        var params = [req.params.userId,req.params.id , req.body.date , req.body.startTime ,req.body.endtime];
-        console.log(req.params.userId,req.params.id , req.body.date , req.body.startTime ,req.body.endtime)
+        var params = [req.params.userId,req.params.id , req.body.date , req.body.startTime];
+        console.log(req.params.userId,req.params.id , req.body.date , req.body.startTime)
         
         console.log("hellllloooooo")
         // console.log(req.body.user_Id,req.body.doctor_Id , req.body.date , req.body.startAt ,req.body.endAt)

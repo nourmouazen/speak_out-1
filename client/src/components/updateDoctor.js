@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import swal from 'sweetalert';
+import swal from "sweetalert";
+import Footer from "./footer";
 
 const UpdateDoctor = (props) => {
   const [state, setState] = useState({
@@ -99,8 +100,9 @@ const UpdateDoctor = (props) => {
         // show sucess alert
         // alert(`Doctor was Edited`);
         swal("INFORMATION UPDATED SUCCESSFULLY!", "success");
-        setInterval(function () { window.location = `/doctorProfile/${window.localStorage.doctorId}`; }, 3000);
-
+        setInterval(function () {
+          window.location = `/doctorProfile/${window.localStorage.doctorId}`;
+        }, 3000);
       })
       .catch((error) => {
         console.log(error.res);
@@ -109,92 +111,100 @@ const UpdateDoctor = (props) => {
   };
 
   const showUpdateForm = () => (
-    <form onSubmit={handleSubmit}>
-      <div className="form-group">
-        <label className="text-muted">
-          Please Enter Your Current Password before updating your Information
-        </label>
-        <input
-          onChange={handleChange("cpassword")}
-          value={state.cpassword}
-          type="password"
-          className="form-control"
-          placeholder="current password"
-          required
-        />
-      </div>
+    <div>
+      <div
+        className="container w-50 p-3 mt-5"
+        style={{
+          backgroundColor: "#E3F2FD",
+          borderRadius: "20px",
+          marginBottom: 20,
+        }}
+      >
+        <form
+          onSubmit={handleSubmit}
+          className="form-group mr-5 ml-5"
+          name="form"
+        >
+          <h2> Edit Profile </h2>
 
-      <div className="form-group">
-        <label className="text-muted"> Doctor Name</label>
-        <input
-          onChange={handleChange("doctorName")}
-          value={doctorName}
-          type="text"
-          className="form-control"
-          placeholder="your name"
-          required
-        />
-      </div>
+          <label className="text-left mb-3">Old Password</label>
+          <input
+            onChange={handleChange("cpassword")}
+            value={state.cpassword}
+            type="password"
+            className="form-control"
+            placeholder="current password"
+            required
+          />
 
-      <div className="form-group">
-        <label className="text-muted">Doctor Speciality</label>
-        <textarea
-          onChange={handleChange("doctorSpeciality")}
-          value={doctorSpeciality}
-          type="text"
-          className="form-control"
-          placeholder="scpeciality"
-          required
-        />
-      </div>
-      <div className="form-group">
-        <label className="text-muted">Bio</label>
-        <textarea
-          onChange={handleChange("bio")}
-          value={bio}
-          type="text"
-          className="form-control"
-          placeholder="your bio .."
-          required
-        />
-      </div>
-      <div className="form-group">
-        <label className="text-muted">Email</label>
-        <input
-          onChange={handleChange("email")}
-          value={email}
-          type="text"
-          className="form-control"
-          placeholder="your email"
-          required
-        />
-      </div>
+          <div className="form-group">
+            <label className="text-left mb-3"> Doctor Name</label>
+            <input
+              onChange={handleChange("doctorName")}
+              value={doctorName}
+              type="text"
+              className="form-control"
+              placeholder="your name"
+              required
+            />
+          </div>
 
-      <div className="form-group">
-        <label className="text-muted">Password</label>
-        <input
-          onChange={handleChange("password")}
-          value={password}
-          type="password"
-          className="form-control"
-          placeholder="your password"
-          required
-        />
-      </div>
+          <div className="form-group">
+            <label className="text-left mb-3">Doctor Speciality</label>
+            <textarea
+              onChange={handleChange("doctorSpeciality")}
+              value={doctorSpeciality}
+              type="text"
+              className="form-control"
+              placeholder="scpeciality"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label className="text-left mb-3">Bio</label>
+            <textarea
+              onChange={handleChange("bio")}
+              value={bio}
+              type="text"
+              className="form-control"
+              placeholder="your bio .."
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label className="text-left mb-3">Email</label>
+            <input
+              onChange={handleChange("email")}
+              value={email}
+              type="text"
+              className="form-control"
+              placeholder="your email"
+              required
+            />
+          </div>
 
-      <div>
-        <button className="btn btn-primary">Submit</button>
-      </div>
-    </form>
-  );
+          <div className="form-group">
+            <label className="text-left mb-3">Password</label>
+            <input
+              onChange={handleChange("password")}
+              value={password}
+              type="password"
+              className="form-control"
+              placeholder="your password"
+              required
+            />
+          </div>
 
-  return (
-    <div className="container pb-5">
-      <br />
-      <h1> EDIT FORM</h1>
-      {showUpdateForm()}
+          <div>
+            <button className="btn btn-info">Submit</button>
+          </div>
+        </form>
+      </div>
+      <Footer />
     </div>
   );
+
+  return <div>{showUpdateForm()}</div>;
 };
 
 export default UpdateDoctor;

@@ -41,69 +41,59 @@ function DoctorQuestions() {
   }
 
   return (
-    <div className="container w-100">
-      <div>
-        <div
-          className="container w-100"
-          style={{
-            textAlign: "left",
-            backgroundColor: "beige",
-            alignSelf: "center",
-            width: "100%",
-          }}
-        >
-          <h2>Doctor Questions Page</h2>
-          {AddQuestion.map((question, index) => (
-            <div key={index}>
-              <h3>
-                {" "}
-                <FaQuestionCircle
-                  size={30}
-                  style={{ marginRight: 10, marginLeft: 3 }}
-                />
-                {question.question}
-              </h3>
-              <br />
-              <form
-                onSubmit={handleSubmit}
-                style={{ borderBottom: "1px solid silver" }}
-              >
-                <div key={index}>
-                  <textarea
-                    style={{ width: 900, height: "auto" }}
-                    name={question.questionId}
-                    value={answers.answer.key}
-                    onChange={handleChange}
+    <div>
+      <div className="container w-100">
+        <div>
+          <div
+            className="container w-100"
+            style={{
+              textAlign: "left",
+              backgroundColor: "#E3F2FD",
+              alignSelf: "center",
+              width: "100%",
+            }}
+          >
+            <h2>Doctor Questions Page</h2>
+            {AddQuestion.map((question, index) => (
+              <div key={index}>
+                <h3>
+                  {" "}
+                  <FaQuestionCircle
+                    size={30}
+                    style={{ marginRight: 10, marginLeft: 3 }}
                   />
-                </div>
+                  {question.question}
+                </h3>
                 <br />
-                <Button
-                  type="submit"
-                  variant="info"
-                  style={{ width: "8%", marginBottom: 20 }}
+                <form
+                  onSubmit={handleSubmit}
+                  style={{ borderBottom: "1px solid silver" }}
                 >
-                  Reply
-                </Button>
-              </form>
-              <br />
-            </div>
-          ))}
+                  <div key={index}>
+                    <textarea
+                      style={{ width: 900, height: "auto" }}
+                      name={question.questionId}
+                      value={answers.answer.key}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <br />
+                  <Button
+                    type="submit"
+                    variant="info"
+                    style={{ width: "8%", marginBottom: 20 }}
+                  >
+                    Reply
+                  </Button>
+                </form>
+                <br />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-
       <div>
-        {/* footer div */}
-        <div
-          className="container w-100 mt-5 mb-5"
-          style={{
-            textAlign: "center",
-            marginLeft: "auto",
-            marginRight: "auto",
-          }}
-        >
-          <Footer />
-        </div>
-        {/* footer div ends*/}
+        <Footer />
       </div>
     </div>
   );

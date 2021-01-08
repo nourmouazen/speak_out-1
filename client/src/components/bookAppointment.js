@@ -5,6 +5,7 @@ import axios from "axios";
 import "react-datepicker/dist/react-datepicker.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { bookAppointment } from "../actions/Appointment";
+import Footer from "./footer";
 
 const url = "http://localhost:5000";
 
@@ -59,77 +60,75 @@ function BookAppointment(props, { currentId, setCurrrentId }) {
     // `<Redirect to={{ pathname: '/appointmentList/'+${window.localStorage.userId}, state: { from: ${props.location } }}/>`
   }
   return (
-    <div className="col-lg-8 offset-lg-2">
-      <h2>BOOK Appointment</h2>
-      <form name="form" onSubmit={handleSubmit}>
-        {/* <div>
-                        <input type='hidden'  name ="user_Id" value={appointmentInfo.user_Id} onChange ={handleChange}></input>
-                        <input type='hidden'  name ="doctor_Id" value={appointmentInfo.doctor_Id} onChange ={handleChange}></input>
-                    </div> */}
-
-        <div className="form-group row">
-          <label for="example-date-input" className="col-2 col-form-label">
-            Date
-          </label>
-          <div class="col-10">
-            <input
-              className="form-control"
-              type="date"
-              name="date"
-              value={appointmentInfo.date}
-              id="example-date-input"
-              onChange={handleSchedule}
-            />
+    <div>
+      <div
+        className="container w-50 p-3 mt-5"
+        style={{
+          backgroundColor: "#E3F2FD",
+          borderRadius: "20px",
+          height: "250px",
+        }}
+      >
+        <h2>Book a Video Session</h2>
+        <form
+          name="form"
+          onSubmit={handleSubmit}
+          style={{ paddingRight: 4, paddingLeft: 4, paddingTop: 15 }}
+        >
+          <div className="form-group row">
+            <label for="example-date-input" className="col-2 col-form-label">
+              Date
+            </label>
+            <div class="col-10">
+              <input
+                className="form-control"
+                type="date"
+                name="date"
+                value={appointmentInfo.date}
+                id="example-date-input"
+                onChange={handleSchedule}
+                required
+              />
+            </div>
           </div>
-        </div>
 
-        <div className="form-group row">
-          <label className="col-2 col-form-label">Start Time: </label>
-          <div class="col-10">
-            <select
-              required
-              className="form-control"
-              // value={schedules.schedule.startAt}
-              value={appointmentInfo.startTime}
-              onChange={handleChange}
-              name="startTime"
-            >
-              {schedules.schedule.map(function (schedule) {
-                return (
-                  <option key={schedule.scheduleId} value={schedule.scheduleId}>
-                    {schedule.startAt}
-                  </option>
-                );
-              })}
-            </select>
+          <div className="form-group row">
+            <label className="col-2 col-form-label">Start Time: </label>
+            <div class="col-10">
+              <select
+                className="form-control"
+                // value={schedules.schedule.startAt}
+                value={appointmentInfo.startTime}
+                onChange={handleChange}
+                name="startTime"
+                required
+              >
+                <option></option>
+                {schedules.schedule.map(function (schedule) {
+                  return (
+                    <option
+                      key={schedule.scheduleId}
+                      value={schedule.scheduleId}
+                    >
+                      {schedule.startAt} - {schedule.endAt}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
           </div>
-        </div>
 
-        <div className="form-group row">
-          <label className="col-2 col-form-label">end Time: </label>
-          <div class="col-10">
-            <select
-              required
-              className="form-control"
-              value={appointmentInfo.endtime}
-              onChange={handleChange}
-              name="endtime"
-            >
-              {schedules.schedule.map(function (schedule) {
-                return (
-                  <option key={schedule.scheduleId} value={schedule.scheduleId}>
-                    {schedule.endAt}
-                  </option>
-                );
-              })}
-            </select>
+          <div
+            className="form-group"
+            style={{ textAlign: "center", marginTop: 30, marginBottom: 30 }}
+          >
+            <button className="btn btn-info">book Appointement</button>
           </div>
-        </div>
-
-        <div className="form-group">
-          <button className="btn btn-primary">book Appointement</button>
-        </div>
-      </form>
+        </form>
+      </div>
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 }

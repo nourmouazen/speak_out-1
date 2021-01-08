@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deleteUser } from "../actions/adduser";
@@ -32,10 +32,11 @@ function UserProfile(props, setCurrentId) {
   return (
     <div>
       <div
-        className="container w-50 p-3 mt-5"
+        className="container w-100 p-3 mt-5"
         style={{
           textAlign: "left",
-          backgroundColor: "beige",
+          fontSize: "14px",
+          backgroundColor: "#E3F2FD",
           alignSelf: "center",
           width: "100%",
           height: "auto",
@@ -45,14 +46,17 @@ function UserProfile(props, setCurrentId) {
         {" "}
         <br />
         <div style={{ marginLeft: 10 }}>
-          <h2> {user.userName}'s Profile</h2>
+          <h2 style={{ borderBottom: "5px solid silver" }}>
+            {" "}
+            {user.userName}'s Profile
+          </h2>
         </div>
         <br />
         <div
           className="row"
           style={{
             textAlign: "left",
-            backgroundColor: "white",
+
             alignSelf: "center",
             width: "800",
             marginLeft: 10,
@@ -81,7 +85,7 @@ function UserProfile(props, setCurrentId) {
           className="row"
           style={{
             textAlign: "left",
-            backgroundColor: "white",
+
             alignSelf: "center",
             width: "800",
             marginLeft: 10,
@@ -108,7 +112,7 @@ function UserProfile(props, setCurrentId) {
           className="row"
           style={{
             textAlign: "left",
-            backgroundColor: "white",
+
             alignSelf: "center",
             width: "800",
             marginLeft: 10,
@@ -130,12 +134,10 @@ function UserProfile(props, setCurrentId) {
             {user.gender}
           </div>
         </div>
-        {/* </hr> */}
         <div
           className="row "
           style={{
             textAlign: "left",
-            backgroundColor: "white",
             alignSelf: "center",
             width: "800",
             marginLeft: 10,
@@ -189,40 +191,36 @@ function UserProfile(props, setCurrentId) {
             Delete
           </Link> */}
 
-          <a
+          <button
             // href="/"
             style={{ backgroundColor: "red", borderColor: "red" }}
             type="button"
             className="btn btn-dark btn-rounded  mr-2 ml-2"
             onClick={() => {
-
               return swal({
                 title: "Are you sure?",
-                text: "Once deleted, you will not be able to retrun to this account!",
+                text:
+                  "Once deleted, you will not be able to retrun to this account!",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
-              })
-                .then((willDelete) => {
-                  if (willDelete) {
-
-
-                    swal("Poof! Your account has been deleted!", {
-                      icon: "success",
-
-                    });
-                    dispatch(deleteUser(window.localStorage.userId));
-                    setInterval(function () { logout(); }, 3000);
-
-                  } else {
-                    swal("Your account is safe!");
-                  }
-                });
-
+              }).then((willDelete) => {
+                if (willDelete) {
+                  swal("Poof! Your account has been deleted!", {
+                    icon: "success",
+                  });
+                  dispatch(deleteUser(window.localStorage.userId));
+                  setInterval(function () {
+                    logout();
+                  }, 3000);
+                } else {
+                  swal("Your account is safe!");
+                }
+              });
             }}
           >
             delete
-          </a>
+          </button>
           <br />
           <br />
           <br />
@@ -230,18 +228,7 @@ function UserProfile(props, setCurrentId) {
         {/* buttons div ends*/}
       </div>
 
-      {/* footer div */}
-      <div
-        className="container w-100 mt-5 mb-5"
-        style={{
-          textAlign: "center",
-          marginLeft: "auto",
-          marginRight: "auto",
-        }}
-      >
-        <Footer />
-      </div>
-      {/* footer div ends*/}
+      <Footer />
     </div>
   );
 }

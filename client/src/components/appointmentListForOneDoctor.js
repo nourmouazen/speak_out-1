@@ -1,8 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import ScheduleForDoctor from "./scheduleForDoctor";
-// import {useDispatch ,useSelector}  from 'react-redux';
+import Footer from "./footer";
 
 const url = "http://localhost:5000";
 
@@ -30,30 +29,36 @@ function AppointmentListForOneDoctor() {
   }, [window.localStorage.doctorId]);
 
   return (
-    <div className="col-lg-8 offset-lg-2">
-      <h2>My Appointment</h2>
-      <table className="table">
-        <thead className="thead-light">
-          <tr>
-            <th>Patient Name</th>
-            <th>Date</th>
-            <th>Start Time</th>
-            <th>End Time</th>
-          </tr>
-        </thead>
+    <div>
+      <div
+        className="container w-50 p-3 mt-5"
+        style={{
+          backgroundColor: "#E3F2FD",
+          borderRadius: "20px",
+          height: "auto",
+        }}
+      >
+        <h2>Patients Appointment</h2>
+        <table className="table">
+          <thead className="thead-light">
+            <tr>
+              <th>Patient Name</th>
+              <th>Date</th>
+              <th> Time</th>
+            </tr>
+          </thead>
 
-        {doctorAppointment.appointment.map((appointment) => (
-          <tbody>
-            <td>{appointment.userName}</td>
-            <td> {appointment.date}</td>
-            <td>{appointment.startTime}</td>
-            <td>{appointment.endtime}</td>
-          </tbody>
-        ))}
-      </table>
-
+          {doctorAppointment.appointment.map((appointment) => (
+            <tbody>
+              <td>{appointment.userName}</td>
+              <td> {appointment.date}</td>
+              <td>{appointment.startTime}</td>
+            </tbody>
+          ))}
+        </table>
+      </div>
       <div>
-        <ScheduleForDoctor />
+        <Footer />
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import { updateUser } from "../actions/adduser";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import Footer from "./footer";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 
 export default function EditUser(props, { currentId, setCurrentId }) {
   const [editUser, setEditUser] = useState({
@@ -18,7 +18,7 @@ export default function EditUser(props, { currentId, setCurrentId }) {
     axios
       .get(
         "http://localhost:5000/users/getOneUser/" +
-        `${window.localStorage.userId}`
+          `${window.localStorage.userId}`
       )
       .then((res) => {
         //console.log(res.data[0])
@@ -70,8 +70,9 @@ export default function EditUser(props, { currentId, setCurrentId }) {
       clear();
     }
     swal("INFORMATION UPDATED SUCCESSFULLY!", "success");
-    setInterval(function () { window.location = `/userPro/${window.localStorage.userId}`; }, 3000);
-
+    setInterval(function () {
+      window.location = `/userPro/${window.localStorage.userId}`;
+    }, 3000);
   }
 
   return (
@@ -79,7 +80,7 @@ export default function EditUser(props, { currentId, setCurrentId }) {
       <div
         className="container w-50 p-3 mt-5"
         style={{
-          backgroundColor: "beige",
+          backgroundColor: "#E3F2FD",
           borderRadius: "20px",
           marginBottom: 20,
         }}
@@ -186,7 +187,7 @@ export default function EditUser(props, { currentId, setCurrentId }) {
           {submitted && !editUser.password && (
             <div className="invalid-feedback">Password is required</div>
           )}
-          <button className="btn btn-primary">
+          <button className="btn btn-info">
             {/* {registering && <span className="spinner-border spinner-border-sm mr-1"></span>} */}
             Edit
           </button>
@@ -194,18 +195,8 @@ export default function EditUser(props, { currentId, setCurrentId }) {
         </form>
         <br />
       </div>
-      {/* footer div */}
-      <div
-        className="container w-100 mt-5 mb-5"
-        style={{
-          textAlign: "center",
-          marginLeft: "auto",
-          marginRight: "auto",
-        }}
-      >
-        <Footer />
-      </div>
-      {/* footer div ends*/}
+
+      <Footer />
     </div>
   );
 }

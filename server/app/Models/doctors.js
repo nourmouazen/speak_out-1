@@ -54,20 +54,24 @@ postOneDoctorImage: (params, callback)=>{
     
     //rating
     postRating: (params,callback)=>{
-        // UPDATE doctors SET  doctorName = ?, doctorSpeciality = ? , bio = ?,email=? , password = ? , image = ? WHERE doctorId = ?
-        var queryStr=`UPDATE doctors SET ratingSum = ? , ratingCount = ? WHERE doctorName = ?`;
-        db.query(queryStr,params,function(err,result){
-            callback(err,result)
-        })
+        // var queryStr="INSERT INTO rating (doctor_Id , rate , user_Id) VALUES (?,?,?); UPDATE doctors  ,( SELECT (SUM(rate)  /  COUNT(*))  as mysum FROM rating ) as s SET doctors.ratingSum = s.mysum WHERE doctors.doctorId = ? ";
 
-    },
-
-    getAllRatings:(params,callback)=>{
-        var queryStr=`SELECT * From doctors`;
+        var queryStr="INSERT INTO rating (doctor_Id , rate , user_Id) VALUES (?,?,?);";
+        console.log("hellllo from models")
         db.query(queryStr,params,function(err,result){
             callback(err,result)
         })
     },
+    getRating:(params , callback)=>{
+        var queryStr = "SELECT (SUM(rate)  /  COUNT(*)) as doctorRate  FROM rating where doctor_Id = ?";
+        // var queryStr1 = " ";
+        db.query(queryStr ,params , function(err,result){
+            callback(err , result)
+        })
+
+    }
+
+    
 
 
 }

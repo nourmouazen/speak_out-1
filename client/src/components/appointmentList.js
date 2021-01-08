@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Footer from "./footer";
 // import {useDispatch ,useSelector}  from 'react-redux';
 
 const url = "http://localhost:5000";
@@ -36,8 +37,7 @@ function AppointmentList() {
           <tr>
             <th>Doctor Name</th>
             <th>Date</th>
-            <th>Start Time</th>
-            <th>End time</th>
+            <th>Time</th>
           </tr>
         </thead>
 
@@ -46,10 +46,11 @@ function AppointmentList() {
             <td>{appointment.doctorName}</td>
             <td> {appointment.date}</td>
             <td>{appointment.startTime}</td>
-            <td>{appointment.endTime}</td>
           </tbody>
         ))}
       </table>
+
+      <Footer />
     </div>
   );
 }

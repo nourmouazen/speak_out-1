@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 //import DatePicker from "react-datepicker";
+import { Link } from "react-router-dom";
+import Footer from "./footer";
 
 import "react-datepicker/dist/react-datepicker.css";
 function CreateDoctorsSchedule() {
@@ -24,7 +26,7 @@ function CreateDoctorsSchedule() {
     axios
       .post(
         `http://localhost:5000/schedule/createSchedule/` +
-        `${window.localStorage.doctorId}`,
+          `${window.localStorage.doctorId}`,
         { selectedDate }
       )
       .then((res) => {
@@ -35,49 +37,64 @@ function CreateDoctorsSchedule() {
       });
   }
   return (
-    <div className="col-lg-8 offset-lg-2">
-      <h2>Create Your Schedule</h2>
-      <br></br>
-      <br></br>
-      <br></br>
-      <form name="form">
-        <div className="form-group">
-          <label for="date">Date:</label>
-          <br></br>
-          <input
-            type="date"
-            class="form-control"
-            id="date"
-            value={selectedDate.date}
-            selected={selectedDate}
-            onChange={handleChange("date")}
-            dateFormat="yyyy/MM/dd"
-          />
-        </div>
-        <div className="form-group">
-          <label for="str">startTime:</label>
-          <input
-            type="time"
-            class="form-control"
-            id="str"
-            value={selectedDate.startTime}
-            onChange={handleChange("startTime")}
-          />
-        </div>
-        <div className="form-group">
-          <label for="end">End Time:</label>
-          <input
-            type="time"
-            class="form-control"
-            id="end"
-            value={selectedDate.endTime}
-            onChange={handleChange("endTime")}
-          />
-        </div>
-        <button type="submit" onClick={handleClick}>
-          Add to the Schedule{" "}
-        </button>
-      </form>
+    <div>
+      <div
+        className="container w-50 p-3 mt-5"
+        style={{ backgroundColor: "#E3F2FD", borderRadius: "20px" }}
+      >
+        <h2>Create Your Schedule</h2>
+        <br />
+
+        <form name="form">
+          <div className="form-group">
+            <label for="date">Date:</label>
+            <br></br>
+            <input
+              type="date"
+              class="form-control"
+              id="date"
+              value={selectedDate.date}
+              selected={selectedDate}
+              onChange={handleChange("date")}
+              dateFormat="yyyy/MM/dd"
+            />
+          </div>
+          <div className="form-group">
+            <label for="str">startTime:</label>
+            <input
+              type="time"
+              class="form-control"
+              id="str"
+              value={selectedDate.startTime}
+              onChange={handleChange("startTime")}
+            />
+          </div>
+          <div className="form-group">
+            <label for="end">End Time:</label>
+            <input
+              type="time"
+              class="form-control"
+              id="end"
+              value={selectedDate.endTime}
+              onChange={handleChange("endTime")}
+            />
+          </div>
+          <button className="btn btn-info" type="submit" onClick={handleClick}>
+            Add to the Schedule{" "}
+          </button>
+          <br />
+        </form>
+        <br />
+        <Link
+          type="button"
+          className="btn btn-info btn-rounded mr-2 ml-2"
+          to={"/AppointmentListForOneDoctor/:id"}
+        >
+          My Schedule{" "}
+        </Link>
+      </div>
+      <div></div>
+      <Footer />
     </div>
   );
 }

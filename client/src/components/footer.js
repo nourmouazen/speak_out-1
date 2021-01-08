@@ -8,57 +8,53 @@ import { TiSocialYoutubeCircular } from "react-icons/ti";
 
 const Footer = () => {
   return (
-    <div>
-      <div style={{ backgroundColor: "grey" }}>
-        <br></br>
-        {/* card1 */}
-        <Card style={{ width: "25%", backgroundColor: "teal-500" }}>
-          <Card.Body class="text-center">
-            <Card.Title>
-              <h3 className="info">Our Mission</h3>
-            </Card.Title>
+    <div
+      className="row"
+      style={{
+        width: "100%",
+        marginLeft: 5,
+        marginRight: 5,
+        textAlign: "center",
+        marginTop: 30,
+        marginBottom: 30,
+      }}
+    >
+      <br />
+      <Card border="primary" style={{ width: "50%" }}>
+        <Card.Header>
+          {" "}
+          <h3>Our Mission</h3>
+        </Card.Header>
+        <Card.Body>
+          <Card.Title>Available for everyone</Card.Title>
+          <Card.Text>
+            Making professional counseling accessible, affordable, convenient so
+            anyone who struggles with life’s challenges can get help, anytime,
+            anywhere.
+          </Card.Text>
+        </Card.Body>
+      </Card>
 
-            <Card.Text >
-              Making professional counseling accessible, affordable, convenient
-              - so anyone who struggles with life’s challenges can get help,
-              anytime, anywhere.
-            </Card.Text>
-            {/* <Card.Link href="#">Card Link</Card.Link>
-            <Card.Link href="#">Another Link</Card.Link> */}
-          </Card.Body>
-        </Card>
-        {/* card2 */}
-        <Card style={{ width: "25%", backgroundColor: "grey" }}>
-          <Card.Body class="text-center">
-            <Card.Title>
-              <h3>Contact US</h3>
-            </Card.Title>
-
-            <Card.Text>
-              <p>Phone Number : <a href="tel:+962 785 200 215">+962 785 200 215</a></p>
-              <p>Phone Number : <a href="tel:+962 785 200 220">+962 785 200 220</a></p>
-              <p>Email : <a href="mailto:contact@Speakout.com">Speakout.com</a></p>
-             Location : SpeakOut 990 Villa Street, Mountain View, CA 94041
-              contact@Speakout.com
-            </Card.Text>
-            <div>
-              <a href="https://www.facebook.com/"><TiSocialFacebookCircular size={40} /></a>
-              <a href="https://www.instagram.com/"><TiSocialInstagramCircular size={40} /></a>
-              <a href="https://www.linkedin.com/"><TiSocialLinkedinCircular size={40} /></a>
-              <a href="https://twitter.com/?lang=en"><TiSocialTwitterCircular size={40} /></a>
-              <a href="https://www.youtube.com/"><TiSocialYoutubeCircular size={40} /></a>
-            </div>
-            {/* <Card.Link href="#">Card Link</Card.Link>
-            <Card.Link href="#">Another Link</Card.Link> */}
-          </Card.Body>
-        </Card>
-      </div>
-      {/* aboutus and contactus ends here */}
-      {/* Copyright */}
-      <div className="footer-copyright text-center py-3">
-        <p> © 2020 Copyright:SpeakOut.com</p>
-      </div>
-    </div >
+      <Card border="primary" style={{ width: "50%" }}>
+        <Card.Header>
+          <h3>Contact US</h3>
+        </Card.Header>
+        <Card.Body>
+          <Card.Title>
+            <TiSocialFacebookCircular size={40} />
+            <TiSocialInstagramCircular size={40} />
+            <TiSocialLinkedinCircular size={40} />
+            <TiSocialTwitterCircular size={40} />
+            <TiSocialYoutubeCircular size={40} />
+          </Card.Title>
+          <Card.Text>
+            SpeakOut 990 Villa Street, Mountain View, CA 94041 //
+            contact@Speakout.com
+          </Card.Text>
+        </Card.Body>
+      </Card>
+      <br />
+    </div>
   );
 };
 

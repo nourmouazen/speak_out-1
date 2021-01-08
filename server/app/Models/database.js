@@ -5,7 +5,8 @@ const connection = mysql.createPool({
   host:     dbconfig.HOST,
   user:     dbconfig.USER,
   password: dbconfig.PASSWORD,
-  database: dbconfig.DB
+  database: dbconfig.DB,
+  multipleStatements :true
 });
 
 connection.query('select 1 + 1', (err, rows) => { 

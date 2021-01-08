@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Footer from "./footer";
 // import {useDispatch ,useSelector}  from 'react-redux';
 
 const url = "http://localhost:5000";
@@ -20,7 +21,7 @@ function ScheduleForDoctor() {
         setDoctorSchedule({ schedules: res.data });
 
         console.log(res.data);
-        console.log(doctorSchedule.schedules[0]);
+        console.log(doctorSchedule.schedules, "hellllllllllllllooooooooooo");
       })
       .catch((err) => {
         console.log(err);
@@ -30,29 +31,28 @@ function ScheduleForDoctor() {
 
   return (
     <div className="col-lg-8 offset-lg-2">
+      <br></br>
+      <br></br>
       <h2>My Schedule</h2>
       <table className="table">
         <thead className="thead-light">
           <tr>
-            <th>Patient Name</th>
             <th>Date</th>
             <th>Start Time</th>
             <th>End time</th>
           </tr>
         </thead>
 
-        {/* {userAppointment.myAppointment.map((appointment) =>(
-              <tbody>
-                <td>{appointment.userName}</td>
-                <td> {appointment.date}</td>
-                <td>{appointment.startTime}</td>
-                <td>{appointment.endTime}</td>
-                
-                </tbody>
-              
-            )
-            )} */}
+        {doctorSchedule.schedules.map((schedule) => (
+          <tbody>
+            <td> {schedule.date}</td>
+            <td>{schedule.startAt}</td>
+            <td>{schedule.endAt}</td>
+          </tbody>
+        ))}
       </table>
+
+      <Footer />
     </div>
   );
 }

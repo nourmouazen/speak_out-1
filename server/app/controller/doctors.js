@@ -141,12 +141,11 @@ module.exports = {
   //rating controller
   //post rating values to database
   postRating: (req, res) => {
-    var params = [
-      req.body.ratingSum,
-      req.body.ratingCount,
-      req.body.doctorName,
-    ];
-    // console.log(req.params.ratingSum,req.params.ratingCount,req.params.doctorName,"Helloooo there")
+    console.log(params,req.body.doctor_Id)
+    var params = [req.body.doctor_Id,req.body.rate,req.params.id];
+    console.log(req.body.doctor_Id)
+
+    // console.log(req.body.doctor_Id,req.body.rate,req.params.id,"Helloooo there")
     doctorModel.postRating(params, function (err, result) {
       if (err) {
         console.log(`you have an error in postRating controller ${err}`);
@@ -154,4 +153,15 @@ module.exports = {
       res.sendStatus(200);
     });
   },
+  getRating :(req,res)=>{
+    var params =[req.params.id]
+    console.log(params)
+    
+    doctorModel.getRating(params,function(err,result){
+      if(err){
+        console.log("you are have an error in your controller " + err)
+      }
+      res.json(result)
+    })
+  }
 };
